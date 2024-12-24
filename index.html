@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kla Klouk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&family=Koulen&family=Playwrite+AU+VIC+Guides&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<style>
+    h1 {
+        color: red;
+        font-family: 'Hanuman', sans-serif;
+        font-size: 50px;
+    }
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        width: 120px;
+        height: 120px;
+        background-color: rgb(187, 187, 187);
+        border-radius: 5px;
+        color: red;
+        font-size: 40px;
+        border: 3px solid rgb(197, 0, 0);
+    }
+
+    #btn_stop {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    #btn_stop:hover {
+        transform: scale(1.1); 
+    }
+    #btn_stop:active {
+        transform: scale(1);
+    }
+    #btn_start {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    #btn_start:hover {
+        transform: scale(1.1);
+    }
+    #btn_start:active {
+        transform: scale(1);
+    }
+    .box .box-img img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid rgb(208, 0, 0);
+    }
+</style>
+<body>
+<center>
+    <h1>ខ្លាឃោក</h1>
+    <div class="main">
+        <div class="div">
+            <div id='main_div1' class="main-div"></div>
+        </div>
+        <div class="div">
+            <div id='main_div2' class="main-div"></div>
+        </div>
+        <div class="div">
+            <div id='main_div3' class="main-div"></div>
+        </div>
+    </div>
+    <br>
+    <input type="button" id="btn_start" value="Start">
+    <input type="button" id="btn_stop" value="Stop">
+    <br><br>
+    <div class="box">
+        <div class="box-img">
+            <img src="Img/box.png" alt="Csharp" width="550" height="350">
+        </div>
+    </div><br>
+    <div>
+        <p>Copyright @project_SV7 2024</p>
+    </div>
+</center>
+</body>
+<script>
+    let div_bg_color = 'red'
+    let main_div1 = document.getElementById('main_div1')
+    let main_div2 = document.getElementById('main_div2')
+    let main_div3 = document.getElementById('main_div3')
+    let btn_start = document.getElementById('btn_start')
+    let btn_stop = document.getElementById('btn_stop')
+    let img = ["Img/kla.png", "Img/klok.png", "Img/chicken.png", "Img/bkea.png", "Img/kdam.png", "Img/fish.png" ]
+    let start = null
+    btn_start.addEventListener('click', function () {
+        start = setInterval(function (){
+            let value1 = Math.floor(Math.random() * 6);
+            let value2 = Math.floor(Math.random() * 6);
+            let value3 = Math.floor(Math.random() * 6);
+            main_div1.innerHTML = `<img src="${img[value1]}" alt="Csharp" width="100" height="100">`
+            main_div2.innerHTML = `<img src="${img[value2]}" alt="Csharp" width="100" height="100">`
+            main_div3.innerHTML = `<img src="${img[value3]}" alt="Csharp" width="100" height="100">`
+        }, 10)
+    })
+
+    btn_stop.addEventListener('click', function () {
+        clearInterval(start)
+    })
+
+    function sound() {
+        let click = new Audio('/sound/click.mp3');
+        click.play()
+    }
+</script>
+</html>
